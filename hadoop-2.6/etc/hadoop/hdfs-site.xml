@@ -29,13 +29,15 @@
 
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>/data/hdfs/namenode</value>
+        <value>file:///data/hdfs/namenode, file:///data/hdfs/namenode2</value>
         <final>true</final>
+        <description>Use two directories to avoid warning of single directory.
+        </description>
     </property>
 
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>/data/hdfs/datanode</value>
+        <value>file:///data/hdfs/datanode</value>
         <final>true</final>
     </property>
 </configuration>

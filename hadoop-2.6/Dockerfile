@@ -26,7 +26,7 @@ RUN \
   \
   mkdir hdfs && \
   mkdir hdfs/tmp && \
-  mkdir hdfs/namenode && \
+  mkdir hdfs/namenode hdfs/namenode2 && \
   mkdir hdfs/datanode && \
   hdfs namenode -format
 
