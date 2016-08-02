@@ -4,7 +4,7 @@ FROM cyfdecyf/java
 WORKDIR /data
 
 # Define commonly used hadoop variable
-ENV HADOOP_HOME /data/hadoop-2.6.0
+ENV HADOOP_HOME /data/hadoop-2.7.2
 ENV HADOOP_CONFIG_HOME $HADOOP_HOME/etc/hadoop
 ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
@@ -18,15 +18,18 @@ RUN \
   cp ~/.ssh/id_dsa.pub ~/.ssh/authorized_keys && \
   mv ./setup_hosts.sh /etc/my_init.d/10_setup_hosts.sh && \
   \
-  curl 'http://192.168.2.119:8000/hadoop-2.6.0.tar.gz' -o hadoop-2.6.0.tar.gz && \
-  tar xzf hadoop-2.6.0.tar.gz && \
-  rm -f hadoop-2.6.0.tar.gz && \
-  cp -r etc hadoop-2.6.0/ && \
+  curl 'http://192.168.2.9:8000/hadoop-2.7.2.tar.gz' -o hadoop-2.7.2.tar.gz && \
+  tar xzf hadoop-2.7.2.tar.gz && \
+  rm -f hadoop-2.7.2.tar.gz && \
+  cp -r etc hadoop-2.7.2/ && \
   rm -rf etc && \
   \
   mkdir hdfs && \
   mkdir hdfs/tmp && \
   mkdir hdfs/namenode hdfs/namenode2 && \
   mkdir hdfs/datanode && \
-  hdfs namenode -format
+  hdfs namenode -format && \
+  \
+  apt-get update && \
+  apt-get install -y htop
 
